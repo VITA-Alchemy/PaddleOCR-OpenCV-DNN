@@ -1,5 +1,5 @@
 # PaddleOCR-OpenCV-DNN
-test opencv dnn + paddleocr
+尝试 opencv dnn 推理 paddleocr
 
 
 ## 环境：
@@ -15,12 +15,14 @@ test opencv dnn + paddleocr
  -  **重要**：dnn推理需要固化输入shape，onnxruntime支持动态shape不需要固化。 
  - 这里固化尺寸，需要使用Netron查看模型中写死的shape，需要根据自己需求设置原来动态的参数（如下图 输入为 ?x3x640x640 说明只有nchw中n可以固化。）
 
- - #检测模型
- paddle2onnx -m paddle2onnx.optimize --model_dir .\ch_ppocr_mobile_v2.0_det_infer\ --model_filename inference.pdmodel --params_filename inference.pdiparams --save_file ./ch_ppocr_mobile_v2.0_det_infer/model.onnx --opset_version 10 --input_shape_dict="{'x':[1,3,640,640]}" --enable_onnx_checker True --enable_dev_version False
+ - #检测模型 
+  - paddle2onnx -m paddle2onnx.optimize --model_dir .\ch_ppocr_mobile_v2.0_det_infer\ --model_filename inference.pdmodel --params_filename inference.pdiparams --save_file ./ch_ppocr_mobile_v2.0_det_infer/model.onnx --opset_version 10 --input_shape_dict="{'x':[1,3,640,640]}" --enable_onnx_checker True --enable_dev_version False
  - #识别模型
-paddle2onnx -m paddle2onnx.optimize --model_dir ./ch_ppocr_mobile_v2.0_rec_infer --model_filename inference.pdmodel --params_filename inference.pdiparams --save_file ./ch_ppocr_mobile_v2.0_rec_infer/model.onnx --opset_version 10 --input_shape_dict="{'x':[1,3,32,1000]}" --enable_onnx_checker True --enable_dev_version False
+ - paddle2onnx -m paddle2onnx.optimize --model_dir ./ch_ppocr_mobile_v2.0_rec_infer --model_filename inference.pdmodel --params_filename inference.pdiparams --save_file ./ch_ppocr_mobile_v2.0_rec_infer/model.onnx --opset_version 10 --input_shape_dict="{'x':[1,3,32,1000]}" --enable_onnx_checker True --enable_dev_version False
 
 - onnx模型simplifier：https://convertmodel.com/
+
+- 推理
 
 ## 不足：
 	
