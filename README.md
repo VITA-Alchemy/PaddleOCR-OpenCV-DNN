@@ -1,5 +1,5 @@
 # PaddleOCR-OpenCV-DNN
-尝试 opencv dnn 推理 paddleocr
+尝试 opencv dnn 推理 paddleocr ；大部分代码来自PaddleOCR项目，修改前后处理适配DNN推理。
 
 
 ## 环境：
